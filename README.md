@@ -1,6 +1,6 @@
 # KanMind Frontend Project
 
-![KanMind Logo](assets/icons/logo_icon.svg)
+![KanMind Logo](frontend/assets/icons/logo_icon.svg)
 
 Dieses Projekt ist ein einfaches Frontend, das mit **Vanilla JavaScript** (reines JavaScript ohne Frameworks) erstellt wurde. Es wurde speziell entwickelt, um Schülern der **Developer Akademie** mit Backend-Erfahrung den Einstieg in kleinere Frontend-Anpassungen zu erleichtern.
 
