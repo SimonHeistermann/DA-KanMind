@@ -10,21 +10,30 @@ from rest_framework import status
 from .serializer import BoardSerializer, TaskSerializer, TaskCommentSerializer, BoardListSerializer
 from .permissions import IsAuthenticatedAndTaskRelatedOrSuperUser, IsAuthenticateAndNotGuestUser, IsAuthenticatedAndSelf, IsAuthenticatedAndBoardRelatedOrSuperUser, IsAuthenticatedAndAssignToMeOrSuperUser, IsAuthenticatedAndRevieingOrSuperUser, IsAuthenticatedAndBoardMember, IsAuthenticatedAndCommentRelatedOrSuperUser
 
+from django.db.models import Q
+
 class BoardListView(generics.ListCreateAPIView):
-    """List all boards or create a new one."""
     permission_classes = [IsAuthenticated]
-    queryset = Board.objects.all()
     serializer_class = BoardListSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Board.objects.filter(Q(members=user) | Q(owner=user)).distinct()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-
 
 class BoardDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update, or delete a board."""
     permission_classes = [IsAuthenticatedAndBoardRelatedOrSuperUser]
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
+    
+    def get(self, request, *args, **kwargs):
+        obj = self.get_object()
+        print(f"Board accessed: {obj.id}, title: {obj.title}, owner: {obj.owner.email}, user: {request.user.email}")
+        return super().get(request, *args, **kwargs)
+
 
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
