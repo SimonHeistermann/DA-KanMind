@@ -30,7 +30,7 @@ class IsAuthenticatedAndBoardRelatedOrSuperUser(BasePermission):
         )
         
 
-class IsAuthenticatedAndTAssignToMeOrSuperUser(BasePermission):
+class IsAuthenticatedAndAssignToMeOrSuperUser(BasePermission):
     """Allow if user is assginee or is superuser."""
 
     """Grant at the view level"""

@@ -110,7 +110,6 @@ class BoardSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         """General validation (can be extended)."""
-        print("Main validate called with:", data)
         return data
 
     def validate_members(self, value):

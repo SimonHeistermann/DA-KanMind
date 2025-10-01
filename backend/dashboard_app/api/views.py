@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import status
 
 from .serializer import BoardSerializer, TaskSerializer, TaskCommentSerializer, BoardListSerializer
-from .permissions import IsAuthenticatedAndTaskRelatedOrSuperUser, IsAuthenticateAndNotGuestUser, IsAuthenticatedAndSelf, IsAuthenticatedAndBoardRelatedOrSuperUser, IsAuthenticatedAndTAssignToMeOrSuperUser, IsAuthenticatedAndRevieingOrSuperUser, IsAuthenticatedAndBoardMember, IsAuthenticatedAndCommentRelatedOrSuperUser
+from .permissions import IsAuthenticatedAndTaskRelatedOrSuperUser, IsAuthenticateAndNotGuestUser, IsAuthenticatedAndSelf, IsAuthenticatedAndBoardRelatedOrSuperUser, IsAuthenticatedAndAssignToMeOrSuperUser, IsAuthenticatedAndRevieingOrSuperUser, IsAuthenticatedAndBoardMember, IsAuthenticatedAndCommentRelatedOrSuperUser
 
 class BoardListView(generics.ListCreateAPIView):
     """List all boards or create a new one."""
@@ -86,7 +86,7 @@ class TaskListView(generics.ListCreateAPIView):
 
 class TaskListAssignToMeView(generics.ListAPIView):
     """List tasks assigned to the current user."""
-    permission_classes = [IsAuthenticatedAndTAssignToMeOrSuperUser]
+    permission_classes = [IsAuthenticated, IsAuthenticatedAndAssignToMeOrSuperUser]
     serializer_class = TaskSerializer
 
     def get_queryset(self):
