@@ -28,14 +28,15 @@ function cleanCurrentTask() {
 async function init() {
     await setBoard();
     cleanCurrentTask();
+    console.log(currentBoard.title);
     renderAllTasks();
     renderMemberList();
     renderTitle();
     if(getParamFromUrl("task_id")) openTaskDetailDialog(getParamFromUrl("task_id"));
-        
 }
 
 function renderTitle(){
+    console.log(currentBoard.title);
     document.getElementById('board_title_link').innerText = currentBoard.title;
     document.getElementById('board_title').innerText = currentBoard.title;
 }

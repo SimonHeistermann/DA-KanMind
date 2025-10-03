@@ -1,4 +1,4 @@
-let currentSettingsBoard
+let currentSettingsBoard;
 
 function validateBoardTitle(element){
     let valid = element.value.trim().length > 2 && element.value.trim().length < 64;

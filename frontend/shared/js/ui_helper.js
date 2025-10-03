@@ -39,13 +39,17 @@ function setError(valid, id) {
 }
 
 function getInitials(fullname) {
+    if (!fullname || typeof fullname !== 'string' || fullname.trim().length === 0) {
+        return "";
+    }
     const parts = fullname.trim().split(" ");
-    const initials = parts[0][0].toUpperCase() + parts[1][0].toUpperCase();
-    return initials;
-  }
-
-
-
+    if (parts.length === 1) {
+        return parts[0][0].toUpperCase();
+    }
+    const firstInitial = parts[0][0].toUpperCase();
+    const secondInitial = parts[1][0].toUpperCase();
+    return firstInitial + secondInitial;
+}
 
 function toggleSwitch(element) {
     element.classList.toggle("active");
