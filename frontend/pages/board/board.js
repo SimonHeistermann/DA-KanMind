@@ -28,7 +28,6 @@ function cleanCurrentTask() {
 async function init() {
     await setBoard();
     cleanCurrentTask();
-    console.log(currentBoard.title);
     renderAllTasks();
     renderMemberList();
     renderTitle();
@@ -36,7 +35,6 @@ async function init() {
 }
 
 function renderTitle(){
-    console.log(currentBoard.title);
     document.getElementById('board_title_link').innerText = currentBoard.title;
     document.getElementById('board_title').innerText = currentBoard.title;
 }
