@@ -54,7 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'corsheaders.middleware.CorsMiddleware',   # <-- HIER
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,7 +69,8 @@ CSRF_TRUSTED_ORIGINS = [
     'http://192.168.1.45:5500',
     "http://localhost:5501", 
     "http://127.0.0.1:5501",
-    'http://192.168.1.45:5501'
+    'http://192.168.1.45:5501',
+    'https://kanmind.projects.simon-heistermann.de/'
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -78,7 +79,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://192.168.1.45:5500',
     "http://localhost:5501", 
     "http://127.0.0.1:5501",
-    'http://192.168.1.45:5501'
+    'http://192.168.1.45:5501',
+    'https://kanmind.projects.simon-heistermann.de/'
 ]
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
