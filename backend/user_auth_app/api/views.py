@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 class RegistrationView(APIView):
     """Handle user registration and return auth token."""
-
+    permission_classes = [AllowAny]
     def post(self, request):
         """Register a new user and return token + user info."""
         serializer = RegistrationSerializer(data=request.data)
