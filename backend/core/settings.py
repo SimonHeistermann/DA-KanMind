@@ -70,7 +70,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5501", 
     "http://127.0.0.1:5501",
     'http://192.168.1.45:5501',
-    'https://kanmind.projects.simon-heistermann.de/'
+    'https://kanmind.projects.simon-heistermann.de'
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -80,7 +80,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5501", 
     "http://127.0.0.1:5501",
     'http://192.168.1.45:5501',
-    'https://kanmind.projects.simon-heistermann.de/'
+    'https://kanmind.projects.simon-heistermann.de'
 ]
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
