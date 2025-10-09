@@ -18,6 +18,8 @@ import dj_database_url
 import dj_database_url
 from dotenv import load_dotenv
 
+load_dotenv()  # Load environment variables from .env file
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -162,6 +164,6 @@ REST_FRAMEWORK = {
 }
 
 AUTHENTICATION_BACKENDS = [
-    "user_auth_app.auth.EmailAuthBackend",  # Pfad ggf. anpassen!
+    "user_auth_app.backends.EmailAuthBackend",  # Change path if necessary!
     "django.contrib.auth.backends.ModelBackend",
 ]
