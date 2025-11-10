@@ -106,25 +106,29 @@ class IsAuthenticatedAndCommentRelatedOrSuperUser(BasePermission):
     """Allow if user is related to the task or is superuser."""
     def has_permission(self, request, view):
         task_id = view.kwargs.get('task_id')
-        print(task_id)
         try:
             task = Task.objects.select_related('board').get(id=task_id)
         except Task.DoesNotExist:
             raise NotFound("Task not found.")
-        
+
         user = request.user
         return user.is_superuser or user in task.board.members.all()
 
 
     def has_object_permission(self, request, view, obj):
-        """Grant if user is task assignee, creator, reviewer, or superuser."""
+        """Grant if user is related to the comment or its task."""
         user = request.user
+        task = obj.task
+
         return (
-            user and user.is_authenticated and (
-                user == obj.assignee or
-                user == obj.creator or
-                user == obj.reviewer or
-                user.is_superuser
+            user
+            and user.is_authenticated
+            and (
+                user == obj.user
+                or user == task.assignee
+                or user == task.creator
+                or user == task.reviewer
+                or user.is_superuser
             )
         )
     

@@ -40,7 +40,7 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = '__all__'
-        read_only_fields = ['id', 'creator', 'created_at']
+        read_only_fields = ['id', 'creator']
 
     def get_comments_count(self, obj):
         """Return number of comments on the task."""
